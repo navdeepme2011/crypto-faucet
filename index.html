@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Faucet</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#101827;color:white}
+header{padding:22px;text-align:center;background:#17243a}
+header h1{color:#55e6a5;margin:0}
+main{max-width:480px;margin:35px auto;padding:20px}
+.card{background:#1c2a40;padding:25px;border-radius:16px;text-align:center}
+input{width:100%;padding:14px;margin:12px 0;border-radius:8px;border:1px solid #53647b;background:#101827;color:white}
+button{width:100%;padding:14px;border:0;border-radius:8px;background:#39d99a;color:#10251d;font-weight:bold;font-size:16px;cursor:pointer}
+.note{color:#aab8ca;font-size:13px;line-height:1.6}
+footer{text-align:center;color:#aab8ca;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>₿ Crypto Faucet</h1>
+<p>Complete tasks. Earn crypto rewards.</p>
+</header>
+<main>
+<div class="card">
+<h2>Free Crypto Claim</h2>
+<p>Enter your FaucetPay email to continue.</p>
+<form id="claimForm">
+<input type="email" id="email" placeholder="FaucetPay email address" required>
+<button type="submit">Continue & Claim</button>
+</form>
+<p id="message" class="note">Demo website — payouts are not enabled yet.</p>
+<hr>
+<h3>How it works</h3>
+<p class="note">1. Enter your email<br>2. Complete an eligible task<br>3. Receive your reward after verification</p>
+</div>
+</main>
+<footer>Crypto Faucet · Rewards platform</footer>
+<script>
+document.getElementById("claimForm").addEventListener("submit",function(e){
+e.preventDefault();
+document.getElementById("message").textContent=
+"Demo only: email received in this page. No payment has been made.";
+});
+</script>
+</body>
+</html>
