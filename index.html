@@ -3,46 +3,57 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crypto Faucet</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#101827;color:white}
-header{padding:22px;text-align:center;background:#17243a}
-header h1{color:#55e6a5;margin:0}
-main{max-width:480px;margin:35px auto;padding:20px}
-.card{background:#1c2a40;padding:25px;border-radius:16px;text-align:center}
-input{width:100%;padding:14px;margin:12px 0;border-radius:8px;border:1px solid #53647b;background:#101827;color:white}
-button{width:100%;padding:14px;border:0;border-radius:8px;background:#39d99a;color:#10251d;font-weight:bold;font-size:16px;cursor:pointer}
-.note{color:#aab8ca;font-size:13px;line-height:1.6}
-footer{text-align:center;color:#aab8ca;font-size:12px;padding:20px}
+body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:24px;background:#131f33;border-bottom:1px solid #293750}
+header h1{color:#46e6a0;margin:0}
+main{max-width:480px;margin:35px auto;padding:16px}
+.card{background:#17243a;border:1px solid #2b3b55;border-radius:18px;padding:24px}
+h2{text-align:center;margin-top:0}
+.muted{color:#a9b8ce;font-size:14px;line-height:1.6}
+input{width:100%;padding:14px;margin:12px 0;background:#0b1220;color:white;border:1px solid #435571;border-radius:9px}
+button{width:100%;padding:14px;background:#46e6a0;border:0;border-radius:9px;font-weight:bold;font-size:16px;cursor:pointer}
+button:disabled{opacity:.6}
+.stats{display:flex;gap:10px;margin:18px 0}
+.stat{flex:1;background:#0b1220;padding:14px 8px;text-align:center;border-radius:10px}
+.stat strong{display:block;color:#46e6a0;margin-bottom:6px}
+#message{overflow-wrap:anywhere}
+footer{text-align:center;padding:20px;color:#8fa0b8;font-size:12px}
 </style>
 </head>
 <body>
 <header>
 <h1>₿ Crypto Faucet</h1>
-<p>Complete tasks. Earn crypto rewards.</p>
+<p class="muted">Complete tasks. Earn crypto rewards.</p>
 </header>
 <main>
-<div class="card">
+<section class="card">
 <h2>Free Crypto Claim</h2>
-<p>Enter your FaucetPay email to continue.</p>
+<p class="muted">Enter the email registered with FaucetPay.</p>
 <form id="claimForm">
-<input type="email" id="email" placeholder="FaucetPay email address" required>
-<button type="submit">Continue & Claim</button>
+<input id="email" type="email" placeholder="Your FaucetPay email" required autocomplete="email">
+<button id="claimButton" type="submit">Continue</button>
 </form>
-<p id="message" class="note">Demo website — payouts are not enabled yet.</p>
-<hr>
-<h3>How it works</h3>
-<p class="note">1. Enter your email<br>2. Complete an eligible task<br>3. Receive your reward after verification</p>
+<div class="stats">
+<div class="stat"><strong>FREE</strong><span class="muted">Demo rewards</span></div>
+<div class="stat"><strong id="timer">Ready</strong><span class="muted">Claim timer</span></div>
 </div>
+<p id="message" class="muted">Demo mode: no real payment will be sent.</p>
+<p class="muted">Your email is not sent to a server by this demo.</p>
+</section>
 </main>
-<footer>Crypto Faucet · Rewards platform</footer>
+<footer>Crypto Faucet · Demo version</footer>
 <script>
-document.getElementById("claimForm").addEventListener("submit",function(e){
-e.preventDefault();
-document.getElementById("message").textContent=
-"Demo only: email received in this page. No payment has been made.";
+const form=document.getElementById("claimForm");
+const message=document.getElementById("message");
+form.addEventListener("submit",function(event){
+event.preventDefault();
+const email=document.getElementById("email").value.trim();
+if(!email)return;
+message.textContent="Demo only: your email was checked in this browser. No payout was made.";
 });
 </script>
 </body>
